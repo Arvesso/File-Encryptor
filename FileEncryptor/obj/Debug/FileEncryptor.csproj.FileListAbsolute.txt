@@ -1,0 +1,8 @@
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\bin\Debug\FileEncryptor.exe
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\bin\Debug\FileEncryptor.pdb
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\obj\Debug\FileEncryptor.csproj.AssemblyReference.cache
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\obj\Debug\FileEncryptor.csproj.SuggestedBindingRedirects.cache
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\obj\Debug\FileEncryptor.csproj.CoreCompileInputs.cache
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\obj\Debug\FileEncryptor.exe
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\obj\Debug\FileEncryptor.pdb
+C:\Users\artem\Desktop\Source\FileEncryptor\FileEncryptor\bin\Debug\FileEncryptor.exe.config
