@@ -12,7 +12,7 @@ namespace FileEncryptor
 {
     internal class MainClass
     {
-        static void CreateFile()
+        private static void CreateFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string toEncryptFilePath = "";
@@ -22,9 +22,21 @@ namespace FileEncryptor
 
             while (true)
             {
-                Console.Write("\n\nEnter password (only 32 characters!): "); password = Console.ReadLine();
+                Console.Write("\n\nEnter password (only 32 characters!) or use 'gen' to auto-generate: "); 
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                password = Console.ReadLine();
+                Console.ResetColor();
 
-                if (password.Length != 32)
+                if (password == "gen")
+                {
+                    password = GeneratePass();
+                    Console.Write("Generated password (saved): ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(password);
+                    Console.ResetColor();
+                    break;
+                }
+                else if (password.Length != 32)
                 {
                     Console.WriteLine("Only 32 characters!");
                 }
@@ -32,7 +44,7 @@ namespace FileEncryptor
                     break;
             }
 
-            Console.Write("Enter file to encrypt: ");
+            Console.Write("\nEnter file to encrypt: ");
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -51,7 +63,7 @@ namespace FileEncryptor
             Console.ReadKey();
         }
 
-        static void OpenFile()
+        private static void OpenFile()
         {
             string password = IniFileOperations.ReadValue("config", "password");
             string toEncryptFilePath = IniFileOperations.ReadValue("config", "File");
@@ -71,6 +83,26 @@ namespace FileEncryptor
             Console.ReadKey();
 
             Encryptor.EncryptFile(toEncryptFilePath, passwordBytes);
+        }
+
+        private static string GeneratePass()
+        {
+            string password = "";
+            string[] arrSymbol = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+                                   "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", 
+                                   "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Z",
+                                   "b", "c", "d", "f", "g", "h", "j", "k", "m", "n", 
+                                   "p", "q", "r", "s", "t", "v", "w", "x", "z", "A", 
+                                   "E", "U", "Y", "a", "e", "i", "o", "u", "y", "0", };
+
+            Random rnd = new Random();
+
+            for (int i = 0; i < 32; i++)
+            {
+                password += arrSymbol[rnd.Next(0, 58)];
+            }
+
+            return password;
         }
 
         [STAThread]
